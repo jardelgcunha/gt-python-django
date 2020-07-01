@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load filtro %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-start mt-3 mb-3">
+    <h2>Cadastro de tarefas</h2>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                {{ form_tarefa.titulo.errors }}
+                <label>Título: </label>
+                {{ form_tarefa.titulo|addclass:'form-control' }}
+            </div>
+            <div class="form-group">
+                {{ form_tarefa.descricao.errors }}
+                <label>Descrição: </label>
+                {{ form_tarefa.descricao|addclass:'form-control' }}
+            </div>
+            <div class="form-group">
+                {{ form_tarefa.data_expiracao.errors }}
+                <label>Data de expiração: </label>
+                {{ form_tarefa.data_expiracao|addclass:'form-control' }}
+            </div>
+            <div class="form-group">
+                {{ form_tarefa.prioridade.errors }}
+                <label>Prioridade: </label>
+                {{ form_tarefa.prioridade|addclass:'form-control' }}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock conteudo %}

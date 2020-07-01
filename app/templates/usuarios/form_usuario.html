@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load filtro %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-center mt-3 mb-3">
+    <h2>Cadastro de usuário</h2>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                {{form_usuario.username.errors}}
+                <label>Nome de usuário: </label>
+                {{form_usuario.username|addclass:'form-control'}}
+            </div>
+            <div class="form-group">
+                {{form_usuario.email.errors}}
+                <label>Endereço de email: </label>
+                {{form_usuario.email|addclass:'form-control'}}
+            </div>
+            <div class="form-group">
+                {{form_usuario.password1.errors}}
+                <label>Senha: </label>
+                {{form_usuario.password1|addclass:'form-control'}}
+            </div>
+            <div class="form-group">
+                {{form_usuario.password2.errors}}
+                <label>Confirmação de senha: </label>
+                {{form_usuario.password2|addclass:'form-control'}}
+            </div>
+            <div class="form-group text-center">
+                <input type="reset" value="Resetar" class="btn btn-primary mr-2"/>
+                <input type="submit" value="Cadastrar" class="btn btn-primary"/>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+    </div>
+</form>
+{% endblock conteudo %}

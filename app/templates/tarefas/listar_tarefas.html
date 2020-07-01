@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-center mt-3 mb-3">
+    <h1>Listagem de tarefas - {{ request.user.username }}</h1>
+</div>
+{% for tarefa in tarefas %}
+<div class="card mb-3">
+    <div class="card-header">
+        Prioridade: {{ tarefa.get_prioridade_display }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Titulo: {{ tarefa.titulo }}</h5>
+        <p class="card-text">Descrição: {{ tarefa.descricao }}</p>
+        <hr/>
+        <a href="{% url 'editar_tarefa' tarefa.id %}">Alterar tarefa</a>
+        <a href="{% url 'remover_tarefa' tarefa.id %}">Remover tarefa</a>
+    </div>
+</div>
+{% endfor %}
+<a href="{% url 'cadastrar_tarefa' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Tarefa"/></a>
+{% endblock conteudo %}
